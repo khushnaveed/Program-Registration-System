@@ -25,7 +25,7 @@ export default function Navbar({ onLogout, isLoggedIn }) {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <span className="ml-2 text-xl md:text-2xl font-serif  text-blue-900">
+            <span className="ml-2 text-xl md:text-2xl  text-blue-900">
               Hopn University
             </span>
           </div>
