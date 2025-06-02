@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProgramsOverview from "./pages/ProgramsOverview";
+import SingleProgramPage from "./pages/SingleProgramPage"
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/programs" element={<ProgramsOverview />} />
+            <Route path="/programs/:id" element={<SingleProgramPage />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
