@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function HeroContent() {
   return (
@@ -31,18 +32,18 @@ export default function HeroContent() {
               Discover new opportunities through learning and innovation.
             </p>
             <div className="flex space-x-4">
-              <a
-                href="/explore"
+              <Link
+                to={`/programs`}
                 className="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
               >
                 Explore Programs
-              </a>
-              <a
-                href="/contact"
+              </Link>
+              <Link
+                to={`/contact`}
                 className="border border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
               >
                 Contact Us
-              </a>
+              </Link>
             </div>
           </motion.div>
 
