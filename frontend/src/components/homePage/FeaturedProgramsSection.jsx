@@ -1,45 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
+// Helper to format ISO date string to readable format
+const formatDate = (isoString) => {
+  const date = new Date(isoString);
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};
+
 const FeaturedProgramsSection = () => {
-  const programs = [
-    {
-      id: "cs101",
-      title: "Computer Science Fundamentals",
-      field: "Computer Science",
-      shortDescription:
-        "Learn the basics of algorithms, data structures, and programming.",
-      duration: "6 months",
-      price: 0,
-      isFree: true,
-      image:
-        "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
-    },
-    {
-      id: "bus202",
-      title: "International Business Strategy",
-      field: "Business",
-      shortDescription:
-        "Develop skills for managing business operations globally.",
-      duration: "4 months",
-      price: 1200,
-      isFree: false,
-      image:
-        "https://images.pexels.com/photos/3184290/pexels-photo-3184290.jpeg",
-    },
-    {
-      id: "eng303",
-      title: "Creative Writing Workshop",
-      field: "Arts & Humanities",
-      shortDescription:
-        "Explore techniques to enhance your writing and storytelling.",
-      duration: "3 months",
-      price: 800,
-      isFree: false,
-      image: "https://images.pexels.com/photos/261909/pexels-photo-261909.jpeg",
-    },
-  ];
+  const [programs, setPrograms] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5005/api/programs")
+      .then((response) => {
+        setPrograms(response.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError("Failed to load programs.");
+        setLoading(false);
+      });
+  }, []);
 
   const container = {
     hidden: { opacity: 0 },
@@ -56,6 +46,16 @@ const FeaturedProgramsSection = () => {
     show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
+  if (loading) {
+    return (
+      <div className="py-16 text-center text-gray-500">Loading programs...</div>
+    );
+  }
+
+  if (error) {
+    return <div className="py-16 text-center text-red-500">{error}</div>;
+  }
+
   const featuredPrograms = programs.slice(0, 3);
 
   return (
@@ -66,7 +66,6 @@ const FeaturedProgramsSection = () => {
           Featured Programs
         </h2>
         <p className="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto">
-
           Explore our top programs designed to kickstart your career.
         </p>
       </div>
@@ -78,9 +77,9 @@ const FeaturedProgramsSection = () => {
         viewport={{ once: true, amount: 0.1 }}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
       >
-        {featuredPrograms.map((program) => (
+        {featuredPrograms.map((program, index) => (
           <motion.div
-            key={program.id}
+            key={program.id || index}
             variants={item}
             className="bg-white rounded-lg shadow hover:shadow-lg flex flex-col h-full"
           >
@@ -93,24 +92,24 @@ const FeaturedProgramsSection = () => {
             <div className="flex-grow p-6 flex flex-col">
               <div className="mb-2">
                 <span className="inline-block px-2 py-1 text-xs font-semibold bg-blue-100 text-blue-800 rounded">
-                  {program.field}
+                  {program.category}
                 </span>
-                {program.isFree && (
-                  <span className="inline-block ml-2 px-2 py-1 text-xs font-semibold bg-green-100 text-green-800 rounded">
-                    Free
-                  </span>
-                )}
               </div>
+
               <h3 className="text-xl font-bold mb-2">{program.title}</h3>
-              <p className="text-gray-600 mb-4 flex-grow">
-                {program.shortDescription}
+              <p className="text-gray-600 mb-4 flex-grow line-clamp-2">
+                {program.description}
               </p>
+
+              <div className="flex justify-between text-sm text-gray-500 mb-2">
+                <span>Start: {formatDate(program.details.startDate)}</span>
+                <span>Duration: {program.details.duration}</span>
+              </div>
+
               <div className="flex justify-between text-sm text-gray-500 mb-6">
-                <span>Duration: {program.duration}</span>
+                <span>Languages: {program.details.languages.join(", ")}</span>
                 <span>
-                  {program.isFree
-                    ? "Free"
-                    : `$${program.price.toLocaleString()}`}
+                  Tuition: ${program.details.tuitionFee.toLocaleString()}
                 </span>
               </div>
             </div>
