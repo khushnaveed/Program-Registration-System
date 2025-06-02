@@ -25,7 +25,10 @@ mongoose
   });
 
 app.use(express.json());
-
+app.use(express.static("views"));
+app.get("", (req, res)=>{
+  res.sendFile("./views/index.html", {root: "."})
+})
 app.use("/api/programs", programsRoute);
 
 app.get("/", (req, res) => {
