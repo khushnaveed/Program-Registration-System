@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Helper to format ISO date string to readable format
 const formatDate = (isoString) => {
@@ -20,7 +21,7 @@ const FeaturedProgramsSection = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/api/programs")
+      .get("/api/programs")
       .then((response) => {
         setPrograms(response.data);
         setLoading(false);
@@ -128,12 +129,12 @@ const FeaturedProgramsSection = () => {
       </motion.div>
 
       <div className="text-center mt-12">
-        <a
-          href="/programs"
+        <Link
+          to={`/programs`}
           className="inline-block text-white bg-blue-900 px-5 py-2 rounded-lg font-semibold hover:bg-blue-950 transition"
         >
           View All Programs
-        </a>
+        </Link>
       </div>
     </div>
   );
