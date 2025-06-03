@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import HeroSection from "../components/HeroSection";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const categories = [
   "all",
@@ -136,13 +137,13 @@ export default function ProgramsOverview() {
               </div>
 
               <div className=" px-6 text-white bg-blue-900  hover:text-white hover:bg-blue-950 py-4 rounded">
-                <button
+                <Link
+                  to={`/programs/${program.id}`}
                   className="w-full flex justify-between items-center font-semibold transition"
-                  onClick={() => alert(`More details for: ${program.title}`)}
                 >
-                  <span>View Details</span>
+                  View Details
                   <ArrowRight size={16} />
-                </button>
+                </Link>
               </div>
             </div>
           ))}
