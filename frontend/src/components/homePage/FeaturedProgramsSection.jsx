@@ -21,7 +21,7 @@ const FeaturedProgramsSection = () => {
 
   useEffect(() => {
     axios
-      .get("/api/programs")
+      .get("http://localhost:5005/api/programs")
       .then((response) => {
         setPrograms(response.data);
         setLoading(false);
@@ -116,13 +116,13 @@ const FeaturedProgramsSection = () => {
             </div>
 
             <div className="border-t border-gray-100 px-6 py-4">
-              <a
-                href={`/programs/${program.id}`}
+              <Link
+                to={`/programs/${program._id}`}
                 className="w-full flex justify-between items-center text-blue-900 hover:text-blue-900 font-semibold transition"
               >
                 <span>Learn More</span>
                 <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
           </motion.div>
         ))}
@@ -130,7 +130,7 @@ const FeaturedProgramsSection = () => {
 
       <div className="text-center mt-12">
         <Link
-          to={`/programs`}
+          to="/programs"
           className="inline-block text-white bg-blue-900 px-5 py-2 rounded-lg font-semibold hover:bg-blue-950 transition"
         >
           View All Programs

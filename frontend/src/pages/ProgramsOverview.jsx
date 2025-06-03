@@ -25,7 +25,7 @@ export default function ProgramsOverview() {
 
   useEffect(() => {
     axios
-      .get("/api/programs")
+      .get("http://localhost:5005/api/programs")
       .then((res) => {
         setPrograms(res.data);
         console.log(res.data);
@@ -138,10 +138,10 @@ export default function ProgramsOverview() {
 
               <div className=" px-6 text-white bg-blue-900  hover:text-white hover:bg-blue-950 py-4 rounded">
                 <Link
-                  to={`/programs/${program.id}`}
-                  className="w-full flex justify-between items-center font-semibold transition"
+                  to={`/programs/${program._id}`}
+                  className="w-full flex justify-between items-center hover:text-white font-semibold transition"
                 >
-                  View Details
+                  <span>Learn More</span>
                   <ArrowRight size={16} />
                 </Link>
               </div>
