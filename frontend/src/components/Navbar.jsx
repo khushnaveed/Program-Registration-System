@@ -131,29 +131,21 @@ export default function Navbar({ onLogout, isLoggedIn }) {
                 {label}
               </Link>
             ))}
+            <Link
+              to="/apply"
+              className="flex items-center gap-1 px-4 py-2 bg-blue-900 text-white hover:bg-blue-950 hover:text-white transition-all duration-200"
+            >
+              <LogIn className="h-4 w-4" />
+              <span>Apply Now</span>
+            </Link>
 
-            {/* Login/Logout for mobile */}
-            {isLoggedIn ? (
-              <button
-                onClick={() => {
-                  handleLogout();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="flex items-center gap-2 w-full px-4 py-2 text-white bg-blue-900 hover:bg-red-600 transition-colors"
-              >
-                <LogOut className="h-5 w-5" />
-                Logout
-              </button>
-            ) : (
-              <Link
-                to="/login"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 px-4 py-2 text-white bg-blue-900 hover:bg-orange-600 transition-colors"
-              >
-                <LogIn className="h-5 w-5" />
-                Login
-              </Link>
-            )}
+            <Link
+              to="/admin"
+              className="flex items-center gap-1 px-4 py-2 bg-blue-900 text-white hover:bg-blue-950 hover:text-white transition-all duration-200"
+            >
+              <LogIn className="h-4 w-4" />
+              <span>Admin Section</span>
+            </Link>
           </div>
         )}
       </nav>
