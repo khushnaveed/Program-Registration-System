@@ -30,7 +30,7 @@ const applicationSchema = new mongoose.Schema({
   },
   program: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Program", // reference to a Program model
+    ref: "Program",
     required: true,
   },
   startDate: {
