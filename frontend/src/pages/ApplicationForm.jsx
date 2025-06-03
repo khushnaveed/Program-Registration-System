@@ -230,7 +230,7 @@ const onSubmit = async (data) => {
                   >
                     <option value="">Select a program...</option>
                     {programs.map((program) => (
-                      <option key={program.id} value={program._id}>
+                      <option key={program._id} value={program._id}>
                         {program.title}
                       </option>
                     ))}
