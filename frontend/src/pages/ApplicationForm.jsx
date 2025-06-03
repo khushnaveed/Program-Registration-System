@@ -31,20 +31,23 @@ export default function ApplicationForm() {
       });
   }, []);
 
-  const onSubmit = async (data) => {
-    setSubmitting(true);
-    setError(null);
-    try {
-      const response = await axios.post("/api/applications", data);
-      console.log("Application submitted:", response.data);
-      setSubmitted(true);
-    } catch (err) {
-      console.error("Submission error:", err);
-      setError("There was an error submitting the form.");
-    } finally {
-      setSubmitting(false);
-    }
-  };
+const onSubmit = async (data) => {
+  setSubmitting(true);
+  setError(null);
+  try {
+    const response = await axios.post("/api/applications", data);
+    console.log("Application submitted:", response.data);
+    setSubmitted(true);
+  } catch (err) {
+    console.error("Submission error:", err);
+    const message =
+      err.response?.data?.message || "There was an error submitting the form.";
+    setError(message);
+  } finally {
+    setSubmitting(false);
+  }
+};
+
 
   if (submitted) {
     return (
