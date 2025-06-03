@@ -67,12 +67,12 @@ export default function SingleProgramPage() {
             <p className="text-xl text-blue-100 mb-8">
               {program.shortDescription}
             </p>
-            <a
-              href={`/apply?program=${program._id}`}
+            <Link
+              to="/apply"
               className="inline-block bg-[#FFB400]  hover:bg-blue-950 text-white font-semibold py-3 px-6 rounded-lg text-center"
             >
               Apply Now
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -157,12 +157,12 @@ export default function SingleProgramPage() {
             </ul>
 
             <div className="mt-6">
-              <a
-                href={`/apply?program=${program._id}`}
+              <Link
+                to="/apply"
                 className="block w-full bg-blue-900 hover:bg-blue-950 text-white font-semibold py-3 px-6 rounded-lg text-center"
               >
                 Apply Now
-              </a>
+              </Link>
             </div>
           </div>
         </div>

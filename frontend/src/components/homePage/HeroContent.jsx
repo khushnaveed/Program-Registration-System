@@ -70,12 +70,12 @@ export default function HeroContent() {
             </ul>
 
             <p className="text-sm mb-3">Enrollment for Fall 2025 is now open</p>
-            <a
-              href="/apply"
+            <Link
+              to="/apply"
               className="inline-block bg-[#FFB400] px-5 py-2 rounded-lg font-semibold hover:bg-blue-950 transition"
             >
               Apply Today
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>
