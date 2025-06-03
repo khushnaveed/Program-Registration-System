@@ -4,10 +4,11 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import ProgramsOverview from "./pages/ProgramsOverview";
-import SingleProgramPage from "./pages/SingleProgramPage"
+import SingleProgramPage from "./pages/SingleProgramPage";
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import ApplicationForm from "./pages/ApplicationForm";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/apply" element={<ApplicationForm />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
           <Footer />
         </div>

@@ -14,22 +14,22 @@ export const createApplication = async (req, res) => {
 // Get all Application
 export const getAllApplications = async (req, res) => {
   try {
-    const applicaApplications = await Application.find();
-    res.status(200).json(applicaApplications);
+    const applications = await Application.find().populate('program');
+    res.status(200).json(applications);
   } catch (err) {
     res
       .status(500)
-      .json({ message: "Error fetching aApplications", error: err });
+      .json({ message: "Error fetching Applications", error: err });
   }
 };
 
 // Get a single application by ID
 export const getApplicationById = async (req, res) => {
   try {
-    const applicaApplication = await Application.findById(req.params.id);
-    if (!applicaApplication)
+    const application = await Application.findById(req.params.id);
+    if (!application)
       return res.status(404).json({ message: "Application not found" });
-    res.json(applicaApplication);
+    res.json(application);
   } catch (err) {
     res.status(500).json({ message: "Error fetching Application", error: err });
   }

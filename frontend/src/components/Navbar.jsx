@@ -69,24 +69,21 @@ export default function Navbar({ onLogout, isLoggedIn }) {
                 </Link>
               ))}
 
-              {/* Login/Logout Button */}
-              {isLoggedIn ? (
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center gap-1 px-4 py-2 bg-blue-900bg-blue-900 text-white rounded-md hover:bg-blue-950 hover:text-white transition-all duration-200"
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span>Logout</span>
-                </button>
-              ) : (
-                <Link
-                  to="/login"
-                  className="flex items-center gap-1 px-4 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-950 hover:text-white transition-all duration-200"
-                >
-                  <LogIn className="h-4 w-4" />
-                  <span>Login</span>
-                </Link>
-              )}
+              <Link
+                to="/apply"
+                className="flex items-center gap-1 px-4 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-950 hover:text-white transition-all duration-200"
+              >
+                <LogIn className="h-4 w-4" />
+                <span>Apply Now</span>
+              </Link>
+
+              <Link
+                to="/admin"
+                className="flex items-center gap-1 px-4 py-2 bg-blue-900 text-white rounded-md hover:bg-blue-950 hover:text-white transition-all duration-200"
+              >
+                <LogIn className="h-4 w-4" />
+                <span>Admin Section</span>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
