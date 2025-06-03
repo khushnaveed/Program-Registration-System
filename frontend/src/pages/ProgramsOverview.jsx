@@ -25,7 +25,7 @@ export default function ProgramsOverview() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/api/programs")
+      .get("/api/programs")
       .then((res) => {
         setPrograms(res.data);
         console.log(res.data);

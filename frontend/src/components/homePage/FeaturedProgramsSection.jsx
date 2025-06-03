@@ -21,7 +21,7 @@ const FeaturedProgramsSection = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5005/api/programs")
+      .get("/api/programs")
       .then((response) => {
         setPrograms(response.data);
         setLoading(false);

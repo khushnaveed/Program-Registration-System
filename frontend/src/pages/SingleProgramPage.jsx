@@ -21,7 +21,7 @@ export default function SingleProgramPage() {
     if (!id) return;
 
     axios
-      .get(`http://localhost:5005/api/programs/${id}`)
+      .get(`/api/programs/${id}`)
       .then((res) => setProgram(res.data))
       .catch(() => setError("Program not found."));
   }, [id]);
