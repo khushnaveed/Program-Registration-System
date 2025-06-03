@@ -62,8 +62,8 @@ const onSubmit = async (data) => {
           animate={{ opacity: 1, scale: 1 }}
           className="bg-white p-8 rounded-lg shadow-md max-w-md mx-auto mt-8 text-center"
         >
-          <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
-            <Check size={32} className="text-[#FFB400] " />
+          <div className="mx-auto w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center mb-6">
+            <Check size={32} className="text-white " />
           </div>
           <h2 className="text-2xl text-blue-900 font-bold mb-4">
             Application Submitted!
