@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import programsRoute from "./routes/programRoutes.js";
+import applicationRoute from "./routes/applicationRoutes.js"
 import cors from "cors";
 
 const app = express();
@@ -26,10 +27,14 @@ mongoose
 
 app.use(express.json());
 app.use(express.static("views"));
+
 app.get("", (req, res)=>{
   res.sendFile("./views/index.html", {root: "."})
 })
+
 app.use("/api/programs", programsRoute);
+app.use("/api/applications", applicationRoute);
+
 
 app.get("/", (req, res) => {
   res.send("Hello from server!");
